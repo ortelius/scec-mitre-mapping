@@ -1,0 +1,6 @@
+nlp-test-models
+.git
+.github
+.ruff_cache
+megalinter-reports
+.mega-linter.yml
