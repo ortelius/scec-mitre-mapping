@@ -12,6 +12,5 @@ RUN dnf update -y; \
     ln -s /usr/bin/python3.11 /usr/bin/python3;
 RUN python3 -m ensurepip --upgrade; \
     pip3 install --no-cache-dir --requirement requirements.in
-RUN python3 main.py --loaddata
 
 ENTRYPOINT ["python3", "main.py"]
