@@ -18,7 +18,6 @@
 import argparse
 import os
 import re
-from typing import Any, List
 
 import joblib
 import stanza
@@ -48,7 +47,7 @@ stop_words_set = set(stop_words)
 stanza.download("en")  # Download English model for Stanza
 nlp = stanza.Pipeline(lang="en", processors="tokenize,mwt,pos,lemma,depparse")
 vectorizer = TfidfVectorizer()
-mitre_data: List[Any] = []
+mitre_data = []  # type: ignore
 
 app = Flask(__name__)
 
@@ -95,8 +94,8 @@ def calculate_similarity(doc1, doc2, vectorizer):
     return combined_similarity
 
 
-def load_mitre(nlp, mitre_data_file) -> List[Any]:
-    mitre_data: List[Any] = []
+def load_mitre(nlp, mitre_data_file):
+    mitre_data = []
 
     if os.path.exists(mitre_data_file):
         # Load mitre_data from the file if it exists
