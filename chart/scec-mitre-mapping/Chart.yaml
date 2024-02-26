@@ -1,8 +1,0 @@
----
-apiVersion: v2
-description: Mitre CVE to Techique Mapping
-icon: https://ortelius.github.io/ortelius-charts/logo.png
-name: scec-mitre-mapping
-type: application
-version: 11.0.0
-appVersion: 11.0.0
