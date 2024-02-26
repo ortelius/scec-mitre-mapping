@@ -1,13 +1,24 @@
 apiVersion: v1
 entries:
   scec-mitre-mapping:
-    - apiVersion: v1
-      appVersion: 11.0.0
-      created: "2023-11-29T21:19:05.598720195Z"
-      description: A Helm chart for Kubernetes
-      digest: dcd9636f12d1b0ae65feaacb37547cbb9468ab310a19fc2e9a348d24417b60f6
-      name: scec-mitre-mapping
-      urls:
-        - https://github.com/ortelius/scec-mitre-mapping/releases/download/scec-mitre-mapping-11.0.0/scec-mitre-mapping-11.0.0.tgz
-      version: 11.0.0
-generated: "2023-11-29T21:19:05.598179195Z"
+  - apiVersion: v2
+    appVersion: 11.0.19
+    created: "2024-02-26T21:01:23.095735252Z"
+    description: Mitre CVE to Techique Mapping
+    digest: c2127cd5da588849d2bbccef509f382f9ab423cccde0ad391a3f558d45919bef
+    icon: https://ortelius.github.io/ortelius-charts/logo.png
+    name: scec-mitre-mapping
+    type: application
+    urls:
+    - https://github.com/ortelius/scec-mitre-mapping/releases/download/scec-mitre-mapping-11.0.19/scec-mitre-mapping-11.0.19.tgz
+    version: 11.0.19
+  - apiVersion: v1
+    appVersion: 11.0.0
+    created: "2023-11-29T21:19:05.598720195Z"
+    description: A Helm chart for Kubernetes
+    digest: dcd9636f12d1b0ae65feaacb37547cbb9468ab310a19fc2e9a348d24417b60f6
+    name: scec-mitre-mapping
+    urls:
+    - https://github.com/ortelius/scec-mitre-mapping/releases/download/scec-mitre-mapping-11.0.0/scec-mitre-mapping-11.0.0.tgz
+    version: 11.0.0
+generated: "2024-02-26T21:01:23.095419456Z"
