@@ -1,5 +1,5 @@
 # hadolint global ignore=DL3041,DL3013
-FROM fedora:34
+FROM amazonlinux:2023
 
 WORKDIR /app
 COPY . /app
