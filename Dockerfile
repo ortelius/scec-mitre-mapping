@@ -1,5 +1,5 @@
 # hadolint global ignore=DL3041,DL3013
-FROM fedora:34
+FROM fedora:41@sha256:cd58e01738fe9d281934c71e47c8e4e605a008bb233436c356bbcbe478149a74
 
 WORKDIR /app
 COPY . /app
