@@ -11,6 +11,4 @@ RUN dnf install -y python3.11; \
     dnf upgrade -y; \
     dnf clean all
 
-RUN python3.11 main.py --loaddata
-
 ENTRYPOINT ["python3.11", "main.py"]
