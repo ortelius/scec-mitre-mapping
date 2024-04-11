@@ -30,6 +30,7 @@ jobs:
       gh_ref: ${{ github.ref }}
       registry: ${{ needs.setenv.outputs.registry }}
       image_repo_tag: ${{ needs.setenv.outputs.image_repo_tag }}
+      loaddata: true
     secrets:
       QUAY_USERID: ${{ secrets.QUAY_USERID }}
       QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
