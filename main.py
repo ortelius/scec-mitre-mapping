@@ -129,7 +129,7 @@ def load_mitre(nlp, mitre_data_file):
 
 
 # Define the Flask route for the /mitre endpoint
-@app.route("/mspai/mitre", methods=["POST"])
+@app.route("/msapi/mitre", methods=["POST"])
 def mitremap():
     # Get JSON payload
     data = request.get_json()
