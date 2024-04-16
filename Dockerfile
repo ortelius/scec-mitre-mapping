@@ -3,6 +3,7 @@ FROM amazonlinux:2023@sha256:ef9435f95b6fc5e7fd9ea156499e62a86f770d9928dfc83ecaa
 
 WORKDIR /app
 COPY . /app
+RUN find / -name mitre.joblib -print
 
 RUN dnf install -y python3.11; \
     curl -sL https://bootstrap.pypa.io/get-pip.py | python3.11 - ; \
