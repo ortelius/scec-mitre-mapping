@@ -3,16 +3,12 @@ FROM amazonlinux:2023@sha256:ef9435f95b6fc5e7fd9ea156499e62a86f770d9928dfc83ecaa
 
 WORKDIR /app
 COPY . /app
-RUN dnf update -y; \
-    dnf install -y findutils; \
-    dnf clean all
-RUN find / -name mitre.joblib -print
 
-RUN dnf install -y python3.11; \
+RUN dnf install -y --releasever 2023.4.20240416 python3.11; \
     curl -sL https://bootstrap.pypa.io/get-pip.py | python3.11 - ; \
     python3.11 -m pip install --no-cache-dir -r requirements.in; \
-    dnf update -y; \
-    dnf upgrade -y; \
+    dnf update -y --releasever 2023.4.20240416; \
+    dnf upgrade -y --releasever 2023.4.20240416; \
     dnf clean all
 
 ENTRYPOINT ["python3.11", "main.py"]
