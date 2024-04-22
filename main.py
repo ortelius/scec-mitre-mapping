@@ -18,10 +18,13 @@
 import argparse
 import os
 import re
+import json
 
 import joblib
 import stanza
-from flask import Flask, jsonify, request
+import uvicorn
+from fastapi import FastAPI, Response
+from pydantic import BaseModel  # pylint: disable=E0611
 from mitreattack.stix20 import MitreAttackData
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -49,8 +52,26 @@ nlp = stanza.Pipeline(lang="en", processors="tokenize,mwt,pos,lemma,depparse")
 vectorizer = TfidfVectorizer()
 mitre_data = []  # type: ignore
 
-app = Flask(__name__)
+# Init FastAPI
+app = FastAPI(
+    title=__name__,
+    description="RestAPI endpoint for retrieving Mitre Techiques",
+    version="10.0.0",
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
+    servers=[{"url": "http://localhost:8080", "description": "Local Server"}],
+    contact={
+        "name": "Ortelius Open Source Project",
+        "url": "https://github.com/ortelius/ortelius/issues",
+        "email": "support@ortelius.io",
+    },
+    debug=True,
+)
 
+class CveText(BaseModel):
+    cvetext: str
 
 def preprocess(text):
     text = text.replace("<code>", " ").replace("</code>", " ")
@@ -129,13 +150,11 @@ def load_mitre(nlp, mitre_data_file):
 
 
 # Define the Flask route for the /mitre endpoint
-@app.route("/msapi/mitre", methods=["POST"])
-def mitremap():
-    # Get JSON payload
-    data = request.get_json()
+@app.post("/msapi/mitre")
+def mitremap(data: CveText):
 
     # Extract cvetext from the payload
-    cvetext = data.get("cvetext", "")
+    cvetext = data.cvetext
     cvedoc = nlp(preprocess(cvetext))
     cvedoc_processed = process_document(cvedoc)
     cvedoc_words_weight = calculate_capitalized_words_weight(cvedoc)
@@ -153,7 +172,8 @@ def mitremap():
         sorted_dict = dict(sorted(scoring.items(), key=lambda item: item[1], reverse=True)[:2])
 
     sorted_dict = dict(sorted(sorted_dict.items(), key=lambda item: item[1], reverse=True))
-    return jsonify(sorted_dict)
+    json_str = json.dumps(sorted_dict, indent=4, default=str)
+    return Response(content=json_str, media_type='application/json')
 
 
 if __name__ == "__main__":
@@ -167,4 +187,4 @@ if __name__ == "__main__":
 
     # Check if --loaddata flag is provided
     if not args.loaddata:
-        app.run(host="0.0.0.0", port=8080)
+        uvicorn.run(app, port=8080)

@@ -1,6 +1,7 @@
-Flask==3.0.3
+fastapi==0.110.2
 joblib==1.4.0
 mitreattack-python==3.0.3
 numpy==1.26.4  # This is a common dependency for scikit-learn
 scikit-learn==1.4.2
 stanza==1.8.2
+uvicorn==0.29.0
