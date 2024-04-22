@@ -167,4 +167,4 @@ if __name__ == "__main__":
 
     # Check if --loaddata flag is provided
     if not args.loaddata:
-        app.run()
+        app.run(host="0.0.0.0", port=8080)
