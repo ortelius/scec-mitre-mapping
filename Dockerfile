@@ -11,4 +11,4 @@ RUN dnf install -y --releasever 2023.4.20240416 python3.11; \
     dnf upgrade -y --releasever 2023.4.20240416; \
     dnf clean all
 
-ENTRYPOINT ["python3.11", "main.py"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

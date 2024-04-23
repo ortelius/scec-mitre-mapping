@@ -15,17 +15,17 @@
 # pylint: disable=E0401,E0611
 # pyright: reportMissingImports=false,reportMissingModuleSource=false
 
-import argparse
+import json
 import os
 import re
-import json
+import sys
 
 import joblib
 import stanza
 import uvicorn
 from fastapi import FastAPI, Response
-from pydantic import BaseModel  # pylint: disable=E0611
 from mitreattack.stix20 import MitreAttackData
+from pydantic import BaseModel  # pylint: disable=E0611
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -70,8 +70,10 @@ app = FastAPI(
     debug=True,
 )
 
+
 class CveText(BaseModel):
     cvetext: str
+
 
 def preprocess(text):
     text = text.replace("<code>", " ").replace("</code>", " ")
@@ -173,18 +175,17 @@ def mitremap(data: CveText):
 
     sorted_dict = dict(sorted(sorted_dict.items(), key=lambda item: item[1], reverse=True))
     json_str = json.dumps(sorted_dict, indent=4, default=str)
-    return Response(content=json_str, media_type='application/json')
+    return Response(content=json_str, media_type="application/json")
 
+
+loaddata = False
+if "--loaddata" in sys.argv:
+    loaddata = True
+
+mitre_data_file = "mitre.joblib"
+mitre_data = load_mitre(nlp, mitre_data_file)
 
 if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser(description="--loaddata: load the data only and not run the flask endpoint")
-    parser.add_argument("--loaddata", action="store_true", help="Load data")
-    args = parser.parse_args()
-
-    mitre_data_file = "mitre.joblib"
-    mitre_data = load_mitre(nlp, mitre_data_file)
-
     # Check if --loaddata flag is provided
-    if not args.loaddata:
+    if not loaddata:
         uvicorn.run(app, port=8080)
