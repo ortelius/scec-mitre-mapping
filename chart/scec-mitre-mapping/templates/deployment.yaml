@@ -33,6 +33,7 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/os: linux
+        arch: {{ default "amd64" .Values.global.arch }}
       containers:
         - name: {{ include "microservice.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
