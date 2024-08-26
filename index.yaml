@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   scec-mitre-mapping:
   - apiVersion: v2
+    appVersion: 11.0.237
+    created: "2024-08-26T06:21:29.450821084Z"
+    description: Mitre CVE to Techique Mapping
+    digest: 5bfef6e1e9e521ddb29f9be6ce0a02b67270ae4e844f602d4515012635847550
+    icon: https://ortelius.github.io/ortelius-charts/logo.png
+    name: scec-mitre-mapping
+    type: application
+    urls:
+    - https://github.com/ortelius/scec-mitre-mapping/releases/download/scec-mitre-mapping-11.0.237/scec-mitre-mapping-11.0.237.tgz
+    version: 11.0.237
+  - apiVersion: v2
     appVersion: 11.0.235
     created: "2024-08-24T01:14:53.431135394Z"
     description: Mitre CVE to Techique Mapping
@@ -967,4 +978,4 @@ entries:
     urls:
     - https://github.com/ortelius/scec-mitre-mapping/releases/download/scec-mitre-mapping-11.0.0/scec-mitre-mapping-11.0.0.tgz
     version: 11.0.0
-generated: "2024-08-24T01:14:53.430074755Z"
+generated: "2024-08-26T06:21:29.450477999Z"
