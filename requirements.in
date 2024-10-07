@@ -1,7 +1,7 @@
 fastapi==0.115.0
 joblib==1.4.2
 mitreattack-python==3.0.6
-numpy==2.1.1  # This is a common dependency for scikit-learn
+numpy==2.1.2  # This is a common dependency for scikit-learn
 scikit-learn==1.5.2
 stanza==1.9.2
 uvicorn==0.31.0
