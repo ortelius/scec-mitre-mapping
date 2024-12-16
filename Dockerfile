@@ -1,5 +1,5 @@
 # hadolint global ignore=DL3041,DL3013,DL4006
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023.6.20241209.0@sha256:5fe09c9adca768013f0104b7dbd8e3c5d203194240f74e32581e717a845d440b
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.6.20241212.0@sha256:bea1de0a7c636402cc10a1746df1e90ab60f01ae2a76a0103c11940d67c68d03
 
 WORKDIR /app
 COPY . /app
