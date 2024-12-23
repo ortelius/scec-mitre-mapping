@@ -3,5 +3,5 @@ joblib==1.4.2
 mitreattack-python==3.0.8
 numpy==2.2.1  # This is a common dependency for scikit-learn
 scikit-learn==1.6.0
-stanza==1.9.2
+stanza==1.10.0
 uvicorn==0.34.0
