@@ -1,4 +1,4 @@
-fastapi==0.115.9
+fastapi==0.115.10
 joblib==1.4.2
 mitreattack-python==3.0.8
 numpy==2.2.3  # This is a common dependency for scikit-learn
