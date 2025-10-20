@@ -4,4 +4,4 @@ mitreattack-python==5.1.0
 numpy==2.3.4  # This is a common dependency for scikit-learn
 scikit-learn==1.7.2
 stanza==1.11.0
-uvicorn==0.37.0
+uvicorn==0.38.0
