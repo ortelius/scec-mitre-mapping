@@ -58,7 +58,10 @@ Relationship to Ortelius
 - Detection of newly disclosed vulnerabilities impacting live assets
 
 
+### Community
 
-GitHub “security framework” discoverability
+- Website: [https://ortelius.io](https://ortelius.io)
+- GitHub: [https://github.com/ortelius](https://github.com/ortelius)
+- Discord: [https://discord.gg/ortelius](https://discord.gg/ortelius)
 
-Just tell me.
+Maintained by the Ortelius open-source community.
